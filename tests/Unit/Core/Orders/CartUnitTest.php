@@ -27,4 +27,35 @@ class CartUnitTest extends TestCase
         $this->assertCount(2, $cart->getItems());
         $this->assertEquals(32, $cart->total());
     }
+
+    public function testCartTotal()
+    {
+        $product1 = new Product(
+            id: '1',
+            name: 'Xpto',
+            price: 12,
+            total: 1,
+        );
+
+        $cart = new Cart();
+        $cart->add(product: $product1);
+        $cart->add(product: $product1);
+        $cart->add(new Product(
+            id: '2',
+            name: 'Xpto Two',
+            price: 20,
+            total: 1,
+        ));
+
+        $this->assertCount(2, $cart->getItems());
+        $this->assertEquals(44, $cart->total());
+    }
+
+    public function testCartEmpty()
+    {
+        $cart = new Cart();
+
+        $this->assertCount(0, $cart->getItems());
+        $this->assertEquals(0, $cart->total());
+    }
 }
