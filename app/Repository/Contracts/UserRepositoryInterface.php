@@ -11,5 +11,5 @@ interface UserRepositoryInterface
     public function delete(string $email): bool;
     //Exemplo didático: forma diferentes realizar o retorno object null
     // public function find(string $email): object|null;
-    public function find(string $email): ?object;
+    public function find(string $email): object;
 }
